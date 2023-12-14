@@ -1,0 +1,22 @@
+<p>route2 works!</p>
+
+<form [formGroup]="form">
+    <div>
+        <label for="field1">Field 1: </label>
+        <input id="field1" type="text" formControlName="field1"/>
+    </div>
+
+    <div formArrayName="fields2">
+         <p>fields 2:</p>
+         <button type="button" (click)="addFields2()">+ add field</button>
+
+         <div *ngFor="let field of fields2.controls; let i = index">
+            <label for="fields{{i}}">Field {{i}}: </label>
+            <input id="fields{{i}}" type="text" [formControlName]="i"/>
+
+            <button *ngIf="i" type="button" (click)="removeFields2(i)">+ remove field</button>
+         </div>
+    </div>
+
+    <p>Form Status: {{form.status}}</p>
+</form>
